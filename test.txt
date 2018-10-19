@@ -1,1 +1,35 @@
-2+2
+import re
+print('Calculator')
+print('Add(+) , Subtract(-) , Divide(/) , Multiply(*) , Power(**) , Percentage(%) , Pi(*22/7) , To Clear(Clear) , To Quit(Quit)')
+run = True
+previous = 0
+Clear = 'Clear'
+Quit = 'Quit'
+def dunc():
+	global run
+	global previous
+	global Clear
+	global Quit
+	e = ''
+	if previous == 0:
+		e = input('Enter The Equation:')
+	else:
+		e = input(str(previous))
+	if e == Quit:
+		print('GoodBye')
+		previous = 0
+		run = False
+	elif e == Clear:
+		previous = 0
+		e = input('Enter The Equation:')
+    elif e == str:
+        print('Invalid')
+        previous = 0
+	else:
+		e = re.sub('[A-Za-z!@#$^&_|<>,?' ':;]' , '' , e)
+	if previous == 0:
+		previous = eval(e)
+	else:
+		previous = eval(str(previous) + e)
+while run:
+	dunc()
